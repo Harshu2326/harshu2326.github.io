@@ -24,23 +24,33 @@
             color: var(--text-color);
         }
 
+        /* NEW: Animated Gradient Header */
         header {
-            background: linear-gradient(135deg, #1f2937, #111827);
+            background: linear-gradient(-45deg, #111827, #0077b5, #0369a1, #1f2937);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
             color: white;
             text-align: center;
-            padding: 5rem 1rem;
+            padding: 5rem 1rem 7rem 1rem; /* Extra padding at bottom for the floating stats */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
+            font-size: 2.8rem;
+            letter-spacing: 1.5px;
         }
 
         header p {
             font-size: 1.2rem;
-            color: #9ca3af;
+            color: #e5e7eb;
             margin: 0.5rem 0 1.5rem;
+            font-weight: 300;
         }
 
         .btn {
@@ -57,25 +67,77 @@
         }
 
         .btn:hover {
-            background: #005582;
-            border-color: #005582;
+            background: transparent;
+            color: white;
             transform: translateY(-2px);
         }
 
         .btn-alt {
             background: transparent;
-            border: 2px solid #9ca3af;
+            border: 2px solid #e5e7eb;
             color: #f3f4f6;
         }
 
         .btn-alt:hover {
-            background: #374151;
-            border-color: #374151;
+            background: white;
+            color: #111827;
+            border-color: white;
+        }
+
+        /* NEW: Floating Live Stats Container */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: -4rem auto 3rem auto; /* Pulls it up over the header */
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-box i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #1f2937;
+            display: inline-block;
+        }
+
+        .stat-box p {
+            margin: 0;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         .container {
             max-width: 1000px;
-            margin: 2rem auto;
+            margin: 0 auto 2rem auto;
             padding: 0 1rem;
         }
 
@@ -103,7 +165,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Upgraded Card CSS for interactive hover effects */
         .card {
             background: var(--card-bg);
             padding: 1.5rem;
@@ -123,7 +184,6 @@
             color: #1f2937;
         }
 
-        /* Upgraded tags with accent colors */
         .tag {
             display: inline-block;
             background: var(--primary-light);
@@ -139,7 +199,7 @@
 
         .highlight {
             font-weight: 600;
-            color: #059669; /* Added a success green for impact statements */
+            color: #059669;
             margin: 1rem 0;
             background: #d1fae5;
             padding: 0.5rem;
@@ -208,10 +268,34 @@
 
     <header>
         <h1>HARIKA KOMATIREDDY</h1>
-        <p>Data Analyst | Excel & Google Sheets | SQL | Power BI</p>
+        <p><i class="fa-solid fa-terminal"></i> Data Analyst | Excel & Google Sheets | SQL | Power BI</p>
         <a href="https://github.com/harshu2326" class="btn" target="_blank"><i class="fa-brands fa-github"></i> View GitHub</a>
         <a href="resume.pdf" class="btn btn-alt" download="Harika_Komatireddy_Data_Analyst.pdf"><i class="fa-solid fa-download"></i> Download Resume</a>
     </header>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <i class="fa-solid fa-table-cells"></i>
+            <div>
+                <h3 class="counter" data-target="23000">0</h3><h3 style="color: var(--primary-color);">+</h3>
+            </div>
+            <p>Rows Analyzed</p>
+        </div>
+        <div class="stat-box">
+            <i class="fa-solid fa-chart-line"></i>
+            <div>
+                <h3 class="counter" data-target="4">0</h3>
+            </div>
+            <p>Automated Dashboards</p>
+        </div>
+        <div class="stat-box">
+            <i class="fa-solid fa-bolt"></i>
+            <div>
+                <h3 class="counter" data-target="25">0</h3><h3 style="color: var(--primary-color);">%</h3>
+            </div>
+            <p>Reporting Time Saved</p>
+        </div>
+    </div>
 
     <div class="container">
         
@@ -350,5 +434,30 @@
         </p>
     </footer>
 
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 50; // The lower the number, the faster the count
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                
+                // Calculate increment logic
+                const inc = target / speed;
+
+                if (count < target) {
+                    // Update and repeat until target is reached
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 40);
+                } else {
+                    counter.innerText = target.toLocaleString(); // Adds commas to big numbers
+                }
+            };
+            
+            // Start the animation
+            updateCount();
+        });
+    </script>
 </body>
 </html>
