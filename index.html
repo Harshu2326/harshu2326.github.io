@@ -7,93 +7,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* NEW: Midnight Dark Mode Color Palette */
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --primary-color: #0077b5;
-            --primary-light: #e0f2fe;
-            --primary-dark: #0369a1;
-            --card-bg: #ffffff;
+            --bg-color: #0f172a; /* Deep Slate */
+            --card-bg: #1e293b; /* Lighter Slate for cards */
+            --text-muted: #94a3b8;
+            --text-bright: #f8fafc;
+            --primary-color: #0ea5e9; /* Neon Cyan/Blue */
+            --primary-glow: rgba(14, 165, 233, 0.4);
+            --tag-bg: rgba(14, 165, 233, 0.1);
         }
         
-        html {
-            scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif; /* Clean, modern body text */
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-muted);
         }
 
         h1, h2, h3, .counter {
-            font-family: 'Poppins', sans-serif; /* Bold, geometric headers */
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-bright);
         }
 
-        /* NEW: Glassmorphism Sticky Navbar */
+        /* Dark Frosted Glass Navbar */
         .navbar {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: center;
             gap: 2rem;
-            padding: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .navbar a {
-            color: #1f2937;
+            color: var(--text-bright);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .navbar a:hover {
             color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-glow);
         }
 
-        /* Animated Gradient Header */
+        /* Upgraded Tech Header */
         header {
-            background: linear-gradient(-45deg, #111827, #0077b5, #0369a1, #1f2937);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            background: radial-gradient(circle at top right, #1e3a8a, #0f172a 60%);
             color: white;
             text-align: center;
-            padding: 4rem 1rem 7rem 1rem;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding: 5rem 1rem 8rem 1rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: 1.5px;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
         }
 
         header p {
-            font-family: 'Fira Code', monospace; /* Real coding font for subtitle */
+            font-family: 'Fira Code', monospace;
             font-size: 1.1rem;
-            color: #e5e7eb;
-            margin: 0.5rem 0 1.5rem;
+            color: var(--primary-color);
+            margin: 0.5rem 0 2rem;
         }
 
+        /* Glowing Buttons */
         .btn {
             display: inline-block;
             background: var(--primary-color);
-            color: white;
+            color: #0f172a;
             padding: 0.75rem 1.5rem;
             text-decoration: none;
             border-radius: 5px;
@@ -102,27 +99,30 @@
             transition: all 0.3s ease;
             border: 2px solid var(--primary-color);
             font-family: 'Poppins', sans-serif;
+            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         .btn:hover {
             background: transparent;
-            color: white;
+            color: var(--primary-color);
             transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--primary-glow);
         }
 
         .btn-alt {
             background: transparent;
-            border: 2px solid #e5e7eb;
-            color: #f3f4f6;
+            border: 2px solid var(--text-muted);
+            color: var(--text-bright);
+            box-shadow: none;
         }
 
         .btn-alt:hover {
-            background: white;
-            color: #111827;
-            border-color: white;
+            border-color: var(--text-bright);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-bright);
         }
 
-        /* Floating Live Stats Container */
+        /* Dark Mode Stats Container */
         .stats-container {
             display: flex;
             justify-content: center;
@@ -136,19 +136,21 @@
         }
 
         .stat-box {
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
             text-align: center;
             flex: 1;
             min-width: 220px;
+            border: 1px solid rgba(255,255,255,0.05);
             border-top: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .stat-box:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--primary-glow);
         }
 
         .stat-box i {
@@ -160,13 +162,13 @@
         .stat-box h3 {
             margin: 0;
             font-size: 2.5rem;
-            color: #1f2937;
+            color: var(--text-bright);
             display: inline-block;
         }
 
         .stat-box p {
             margin: 0;
-            color: #6b7280;
+            color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.85rem;
@@ -180,22 +182,19 @@
         }
 
         section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px; /* Prevents sticky nav from covering section titles */
+            margin-bottom: 5rem;
+            scroll-margin-top: 100px;
         }
 
         h2 {
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 0.5rem;
-            color: #111827;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        h2 i {
-            color: var(--primary-color);
-        }
+        h2 i { color: var(--primary-color); }
 
         .grid {
             display: grid;
@@ -204,105 +203,111 @@
             margin-top: 1.5rem;
         }
 
+        /* Dark Mode Project Cards */
         .card {
             background: var(--card-bg);
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Awesome neon border top effect */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0.5;
+            transition: opacity 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(14, 165, 233, 0.3);
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: #1f2937;
-        }
+        .card:hover::before { opacity: 1; }
 
+        .card h3 { margin-top: 0; }
+
+        /* Neon Tags */
         .tag {
             display: inline-block;
-            background: var(--primary-light);
-            color: var(--primary-dark);
+            background: var(--tag-bg);
+            color: var(--primary-color);
             padding: 0.3rem 0.6rem;
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: 600;
             margin-right: 0.4rem;
             margin-bottom: 0.5rem;
-            border: 1px solid #bae6fd;
-            font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            font-family: 'Fira Code', monospace;
         }
 
         .highlight {
             font-weight: 600;
-            color: #059669;
+            color: #34d399; /* Neon Green for positive impact */
             margin: 1rem 0;
-            background: #d1fae5;
+            background: rgba(52, 211, 153, 0.1);
             padding: 0.5rem;
             border-radius: 4px;
             display: inline-block;
+            border-left: 3px solid #34d399;
         }
 
-        ul {
-            padding-left: 1.2rem;
-        }
+        ul { padding-left: 1.2rem; }
 
         .job {
             margin-bottom: 2rem;
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-            border-left: 4px solid #4b5563;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-left: 4px solid var(--primary-color);
         }
 
-        .job h3 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
+        .job h3 { margin-top: 0; margin-bottom: 0.5rem; }
 
         .job-meta {
             font-weight: normal;
             font-size: 1rem;
-            color: #6b7280;
+            color: var(--primary-color);
             display: block;
             margin-top: 0.2rem;
+            font-family: 'Fira Code', monospace;
         }
 
-        .skill-group {
-            margin-bottom: 1.5rem;
-        }
+        .skill-group { margin-bottom: 1.5rem; }
 
         .skill-group h3 {
             font-size: 1.1rem;
-            color: #4b5563;
-            margin-bottom: 0.5rem;
+            color: var(--text-bright);
+            margin-bottom: 0.8rem;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            background: #111827;
-            color: #9ca3af;
+            padding: 3rem 1rem;
+            background: #020617;
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 4rem;
-            font-family: 'Inter', sans-serif;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         footer a {
-            color: white;
+            color: var(--text-bright);
             text-decoration: none;
             margin: 0 0.5rem;
             transition: color 0.3s;
         }
         
-        footer a:hover {
-            color: var(--primary-color);
-        }
+        footer a:hover { color: var(--primary-color); text-shadow: 0 0 10px var(--primary-glow); }
     </style>
 </head>
 <body>
@@ -316,7 +321,7 @@
 
     <header>
         <h1>HARIKA KOMATIREDDY</h1>
-        <p><i class="fa-solid fa-terminal"></i> Data Analyst | Excel & Google Sheets | SQL | Power BI</p>
+        <p><i class="fa-solid fa-terminal"></i> > Data Analyst | Excel & SQL | Power BI _</p>
         <a href="https://github.com/harshu2326" class="btn" target="_blank"><i class="fa-brands fa-github"></i> View GitHub</a>
         <a href="resume.pdf" class="btn btn-alt" download="Harika_Komatireddy_Data_Analyst.pdf"><i class="fa-solid fa-download"></i> Download Resume</a>
     </header>
@@ -334,7 +339,7 @@
             <div>
                 <h3 class="counter" data-target="4">0</h3>
             </div>
-            <p>Automated Dashboards</p>
+            <p>Automated Pipelines</p>
         </div>
         <div class="stat-box">
             <i class="fa-solid fa-bolt"></i>
@@ -431,7 +436,7 @@
             
             <div class="job">
                 <h3>Data Analytics Virtual Intern</h3>
-                <span class="job-meta">Quantium (Forage) | 2025</span>
+                <span class="job-meta">> Quantium (Forage) | 2025</span>
                 <ul>
                     <li>Analyzed 10,000+ retail transactions to identify sales and customer behavior trends.</li>
                     <li>Built automated Excel and Python reports to improve efficiency by 20%.</li>
@@ -441,7 +446,7 @@
 
             <div class="job">
                 <h3>Data Analytics Virtual Intern</h3>
-                <span class="job-meta">Tata (Forage) | 2025</span>
+                <span class="job-meta">> Tata (Forage) | 2025</span>
                 <ul>
                     <li>Cleaned and validated 5,000+ datasets for accurate reporting.</li>
                     <li>Extracted KPIs and built dashboards for performance tracking.</li>
@@ -454,8 +459,8 @@
         <section id="certifications">
             <h2><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="job">
-                <h3><a href="cisco-cert.pdf" target="_blank" style="color: #0077b5; text-decoration: none;">Data Analytics Essentials</a></h3>
-                <span class="job-meta">Cisco Networking Academy</span>
+                <h3><a href="cisco-cert.pdf" target="_blank" style="color: var(--text-bright); text-decoration: none;">Data Analytics Essentials</a></h3>
+                <span class="job-meta">> Cisco Networking Academy</span>
                 <ul>
                     <li>Gained hands-on skills in data collection, cleaning, and qualitative analysis workflows.</li>
                     <li>Developed foundational knowledge of data security, analysis methodologies, and professional reporting.</li>
@@ -467,7 +472,7 @@
             <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <div class="job">
                 <h3>B.Tech Computer Science & Engineering (Data Science)</h3>
-                <span class="job-meta">Audisankara College of Engineering & Technology (2021-2025)</span>
+                <span class="job-meta">> Audisankara College of Engineering & Technology (2021-2025)</span>
             </div>
         </section>
 
