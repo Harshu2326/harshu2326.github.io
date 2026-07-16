@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harika Komatyreddy | Data Analyst Portfolio</title>
+    <title>Harika Komatireddy | Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #f8f9fa;
             --text-color: #333;
             --primary-color: #0077b5;
+            --primary-light: #e0f2fe;
+            --primary-dark: #0369a1;
             --card-bg: #ffffff;
         }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -19,14 +23,26 @@
             background-color: var(--bg-color);
             color: var(--text-color);
         }
+
         header {
             background: linear-gradient(135deg, #1f2937, #111827);
             color: white;
             text-align: center;
             padding: 5rem 1rem;
         }
-        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
-        header p { font-size: 1.2rem; color: #9ca3af; margin: 0.5rem 0 1.5rem; }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            margin: 0.5rem 0 1.5rem;
+        }
+
         .btn {
             display: inline-block;
             background: var(--primary-color);
@@ -36,25 +52,156 @@
             border-radius: 5px;
             font-weight: bold;
             margin: 0.5rem;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
         }
-        .btn:hover { background: #005582; }
-        .btn-alt { background: #4b5563; }
-        .btn-alt:hover { background: #374151; }
-        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-        section { margin-bottom: 3rem; }
-        h2 { border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; color: #111827; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card h3 { margin-top: 0; color: #1f2937; }
-        .tag { display: inline-block; background: #e5e7eb; color: #4b5563; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem; margin-right: 0.3rem; margin-bottom: 0.3rem; }
-        .highlight { font-weight: bold; color: var(--primary-color); margin: 1rem 0; }
-        ul { padding-left: 1.2rem; }
-        .job { margin-bottom: 1.5rem; }
-        .job h3 { margin-bottom: 0.2rem; }
-        .job-meta { font-weight: normal; font-size: 1rem; color: #6b7280; }
-        footer { text-align: center; padding: 2rem; background: #111827; color: #9ca3af; font-size: 0.9rem; }
-        footer a { color: white; text-decoration: none; margin: 0 0.5rem; }
+
+        .btn:hover {
+            background: #005582;
+            border-color: #005582;
+            transform: translateY(-2px);
+        }
+
+        .btn-alt {
+            background: transparent;
+            border: 2px solid #9ca3af;
+            color: #f3f4f6;
+        }
+
+        .btn-alt:hover {
+            background: #374151;
+            border-color: #374151;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Upgraded Card CSS for interactive hover effects */
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+
+        /* Upgraded tags with accent colors */
+        .tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.4rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #bae6fd;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #059669; /* Added a success green for impact statements */
+            margin: 1rem 0;
+            background: #d1fae5;
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            border-left: 4px solid #4b5563;
+        }
+
+        .job h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            font-weight: normal;
+            font-size: 1rem;
+            color: #6b7280;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .skill-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-group h3 {
+            font-size: 1.1rem;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #111827;
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -62,92 +209,121 @@
     <header>
         <h1>HARIKA KOMATIREDDY</h1>
         <p>Data Analyst | Excel & Google Sheets | SQL | Power BI</p>
-        <a href="https://github.com/harshu2326" class="btn" target="_blank">View GitHub</a>
-        <a href="resume.pdf" class="btn btn-alt" download="Harika_Komatyreddy_Data_Analyst.pdf">Download Resume</a>
+        <a href="https://github.com/harshu2326" class="btn" target="_blank"><i class="fa-brands fa-github"></i> View GitHub</a>
+        <a href="resume.pdf" class="btn btn-alt" download="Harika_Komatireddy_Data_Analyst.pdf"><i class="fa-solid fa-download"></i> Download Resume</a>
     </header>
 
     <div class="container">
         
         <section id="about">
-            <h2>Professional Summary</h2>
-            <p>Data Analyst fresher with hands-on experience in Excel, Google Sheets, SQL, and Power BI, specializing in dashboard development, KPI tracking, and data-driven reporting. Skilled in analyzing business and customer data to generate actionable insights, with growing exposure to marketing analytics and performance tracking. Proven ability to automate reporting and improve decision-making efficiency.</p>
+            <h2><i class="fa-regular fa-id-card"></i> Professional Summary</h2>
+            <p>Results-oriented Data Analyst with a strong foundation in SQL, Python, and Power BI, specializing in transforming complex datasets into actionable business insights. Proven ability to streamline operations and enhance decision-making through automated reporting, KPI tracking, and interactive dashboard development. Passionate about leveraging data to drive strategic growth and optimize performance.</p>
         </section>
 
         <section id="skills">
-            <h2>Technical Skills</h2>
-            <div>
-                <span class="tag">Excel</span><span class="tag">Google Sheets</span><span class="tag">SQL</span><span class="tag">Python</span>
-                <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Power BI</span><span class="tag">Data Extraction</span>
-                <span class="tag">KPI Tracking</span><span class="tag">Reporting</span><span class="tag">Google Analytics (Basic)</span>
-                <span class="tag">Meta Ads (Basic)</span><span class="tag">Joins</span><span class="tag">Aggregations</span>
-                <span class="tag">Window Functions</span><span class="tag">CTEs</span><span class="tag">Git</span><span class="tag">Jupyter Notebook</span>
+            <h2><i class="fa-solid fa-code"></i> Technical Skills</h2>
+            <div class="skill-group">
+                <h3>Tools & Technologies</h3>
+                <span class="tag">Excel</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Git</span>
+                <span class="tag">Jupyter Notebook</span>
+                <span class="tag">Google Analytics (Basic)</span>
+                <span class="tag">Meta Ads (Basic)</span>
+            </div>
+            <div class="skill-group">
+                <h3>Languages</h3>
+                <span class="tag">SQL</span>
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">NumPy</span>
+            </div>
+            <div class="skill-group">
+                <h3>Analytics & Concepts</h3>
+                <span class="tag">Data Extraction</span>
+                <span class="tag">KPI Tracking</span>
+                <span class="tag">Reporting</span>
+                <span class="tag">Joins & CTEs</span>
+                <span class="tag">Window Functions</span>
+                <span class="tag">A/B Testing</span>
+                <span class="tag">Statistical Analysis</span>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Featured Projects</h2>
+            <h2><i class="fa-solid fa-chart-pie"></i> Featured Projects</h2>
             <div class="grid">
+                
                 <div class="card">
                     <h3>Sales KPI Dashboard</h3>
                     <p>Analyzed 8,000+ sales records to identify revenue drivers and customer trends. Built dashboards tracking KPIs similar to marketing and sales performance metrics.</p>
-                    <p class="highlight">📈 Impact: Reduced manual reporting effort by 20%.</p>
+                    <p class="highlight"><i class="fa-solid fa-arrow-trend-up"></i> Impact: Reduced manual reporting effort by 20%.</p>
                     <div>
                         <span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power BI</span>
                     </div>
                 </div>
+
                 <div class="card">
                     <h3>Automated KPI Reporting System</h3>
                     <p>Developed automated reporting pipeline processing 1,000+ records. Enabled real-time performance tracking and operational insights.</p>
-                    <p class="highlight">⚙️ Impact: Reduced reporting time by 25%.</p>
+                    <p class="highlight"><i class="fa-solid fa-bolt"></i> Impact: Reduced reporting time by 25%.</p>
                     <div>
                         <span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Excel</span>
                     </div>
                 </div>
+
                 <div class="card">
                     <h3>Customer Behavior & Segmentation Analysis</h3>
                     <p>Segmented 5,000+ customers using K-Means clustering. Supported data-driven marketing and customer engagement decisions.</p>
-                    <p class="highlight">🎯 Impact: Identified high-value segments for targeted marketing.</p>
+                    <p class="highlight"><i class="fa-solid fa-bullseye"></i> Impact: Identified high-value segments for targeted marketing.</p>
                     <div>
                         <span class="tag">Python</span><span class="tag">Pandas</span>
                     </div>
                 </div>
+
                 <div class="card">
-                    <h3>A/B Testing Analysis for Conversion Optimization</h3>
+                    <h3>A/B Testing Analysis for Conversion</h3>
                     <p>Designed and analyzed A/B tests to evaluate user engagement and conversion metrics. Provided key insights to improve campaign performance and user experience.</p>
-                    <p class="highlight">🧪 Focus: Statistical Analysis</p>
+                    <p class="highlight"><i class="fa-solid fa-flask"></i> Focus: Statistical Analysis</p>
                     <div>
                         <span class="tag">Python</span><span class="tag">Statistical Analysis</span>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <section id="experience">
-            <h2>Experience & Internships</h2>
+            <h2><i class="fa-solid fa-briefcase"></i> Experience & Job Simulations</h2>
             
             <div class="job">
-                <h3>Data Analytics Virtual Intern <span class="job-meta">— Quantium (Forage) | 2025</span></h3>
+                <h3>Data Analytics Virtual Intern</h3>
+                <span class="job-meta">Quantium (Forage) | 2025</span>
                 <ul>
                     <li>Analyzed 10,000+ retail transactions to identify sales and customer behavior trends.</li>
                     <li>Built automated Excel and Python reports to improve efficiency by 20%.</li>
                     <li>Generated insights supporting business and marketing decisions.</li>
                 </ul>
             </div>
-            
+
             <div class="job">
-                <h3>Data Analytics Virtual Intern <span class="job-meta">— Tata (Forage) | 2025</span></h3>
+                <h3>Data Analytics Virtual Intern</h3>
+                <span class="job-meta">Tata (Forage) | 2025</span>
                 <ul>
                     <li>Cleaned and validated 5,000+ datasets for accurate reporting.</li>
                     <li>Extracted KPIs and built dashboards for performance tracking.</li>
                     <li>Supported data-driven insights for business operations.</li>
                 </ul>
             </div>
+            
         </section>
 
         <section id="certifications">
-            <h2>Certifications</h2>
+            <h2><i class="fa-solid fa-certificate"></i> Certifications</h2>
             <div class="job">
-                <h3><a href="cisco-cert.pdf" target="_blank" style="color: #0077b5; text-decoration: none;">Data Analytics Essentials</a> <span class="job-meta">— Cisco Networking Academy</span></h3>
+                <h3><a href="cisco-cert.pdf" target="_blank" style="color: #0077b5; text-decoration: none;">Data Analytics Essentials</a></h3>
+                <span class="job-meta">Cisco Networking Academy</span>
                 <ul>
                     <li>Gained hands-on skills in data collection, cleaning, and qualitative analysis workflows.</li>
                     <li>Developed foundational knowledge of data security, analysis methodologies, and professional reporting.</li>
@@ -156,19 +332,21 @@
         </section>
 
         <section id="education">
-            <h2>Education</h2>
-            <p><strong>B.Tech Computer Science & Engineering (Data Science)</strong><br>
-            Audisankara College of Engineering & Technology (2021-2025)</p>
+            <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+            <div class="job">
+                <h3>B.Tech Computer Science & Engineering (Data Science)</h3>
+                <span class="job-meta">Audisankara College of Engineering & Technology (2021-2025)</span>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Harika Komatyreddy | Connect with me:</p>
+        <p>&copy; 2026 Harika Komatireddy | Connect with me:</p>
         <p>
-            <a href="mailto:harikareddykomatyreddy@gmail.com">Email</a> | 
-            <a href="https://www.linkedin.com/in/harika-komatyreddy" target="_blank">LinkedIn</a> | 
-            <a href="https://github.com/harshu2326" target="_blank">GitHub</a>
+            <a href="mailto:harikareddykomatyreddy@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> | 
+            <a href="https://www.linkedin.com/in/harika-komatyreddy" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> | 
+            <a href="https://github.com/harshu2326" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         </p>
     </footer>
 
